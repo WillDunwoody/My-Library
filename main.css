@@ -1,9 +1,15 @@
 body {
-    background-color: #f8f5f3;
+    background-color: #ede0d4;
+    font-family: Urbanist;
 }
 
-h1 {
-    background-color: #b7ad98;
-    color: blue;
-    
+#head {
+    background-color: #e6ccb2;
+    text-align: center;
+    color: 7f5539;
+    width: 100%;
+}
+
+#myLibrary {
+    font-size: 5em;
 }
