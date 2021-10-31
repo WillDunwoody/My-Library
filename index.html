@@ -1,17 +1,28 @@
 <html>
     <head>
+        
         <link rel="stylesheet" href="main.css">
-        <script type="text/javascript" src="app.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
+  
     </head>
     <body>
-        <div id="head">
-            <img id= 'header' src="/images/MyLibrary.png">
-            <h1 id="myLibrary"><b>My</b>Library</h1>
+        <div class="head">
+            <img class= 'header-image' src="/images/MyLibrary.png">
             <button id="addBook">Add Book</button>
         </div>
-        <div id="container"></div>
+        <div class="container">
+        </div>
+        <div class="addBookForm" id="addBookForm">
+            Author:<input type="text" class="formInput" id="author">
+            Title:<input type="text" class="formInput" id="title">
+            Pages:<input type="number" class="formInput" id="totalPages">
+            Read:<input type="text" class="formInput" id="readStatus">
+            <button id="submitBook" >Submit</button>
+        </div>
+        <div id="overlay"></div>
+        <script src="app.js"></script>
     </body>
+    
 </html>
