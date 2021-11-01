@@ -30,16 +30,22 @@ button {
     margin-bottom: 20px;
 }
 
+.mainBody {
+    display: grid;
+    justify-content: center;
+}
 .container {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 40px;
-    margin-top: 40px;
+    margin: 40px;
+    width: 960px;
 }
 
 .bookCard {
     height: 200px;
     width: 200px;
+    margin-top: 40px;
     background-color: white;
 }
 
