@@ -4,7 +4,7 @@ function Book(title, author, totalPages, readStatus) {
     this.title = title;
     this.author = author;
     this.totalPages = totalPages;
-    this.read = readStatus;
+    this.readStatus = readStatus;
 }
 
 const addBook = document.getElementById("addBook")
@@ -18,27 +18,48 @@ addBook.addEventListener("click", function() {
 })
 
 submitBook.addEventListener("click", function() {
+    checkInputs()
+})
+
+function getInputs() {
     let title = document.getElementById("title").value
     let author = document.getElementById("author").value
     let totalPages = document.getElementById("totalPages").value
     let readStatus = document.getElementById("readStatus").value
+    
+    addBookToLibrary(title, author, totalPages, readStatus)
+}
 
+function checkInputs() {
+    console.log(inputs)
+    inputs.forEach(input =>  {
+        if(input.value === '') {
+            input.value = 'This is blank'
+        }
+    })
+}
+
+function addBookToLibrary(title, author, totalPages, readStatus) {
     let newBook = new Book(title, author, totalPages, readStatus)
     myLibrary.push(newBook)
+    createCard()
+    clearInputs()
+}
+
+function clearInputs() {
     inputs.forEach(input => input.value = '')
     addBookForm.classList.remove('active')
-    createCard()
-})
+}
 
 function createCard() {
     clearBookCards()
     for (let books of myLibrary) {
 
         let newCard = document.createElement('div')
-        let title = document.createElement('h3')
-        let author = document.createElement('h2')
-        let totalPages = document.createElement('h3')
-        let readStatus = document.createElement('h3')
+        let title = document.createElement('h2')
+        let author = document.createElement('h3')
+        let totalPages = document.createElement('h4')
+        let readStatus = document.createElement('h4')
         newCard.classList.add('bookCard')
         
         bookContainer.appendChild(newCard)

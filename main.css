@@ -1,6 +1,7 @@
 body {
     background-color: #ede0d4;
     font-family: Urbanist;
+    color: #7f5539;
     margin: 0%;
 }
 
@@ -37,16 +38,17 @@ button {
 .container {
     display: grid;
     justify-content: center;
+    justify-items: center;
     grid-template-columns: repeat(3, 1fr);
     margin: 40px;
     width: 960px;
 }
 
 .bookCard {
-    height: 200px;
+    height: 250px;
     width: 200px;
     margin-top: 40px;
-    background-color: white;
+    background-color: #e6ccb2;
 }
 
 .addBookForm {
