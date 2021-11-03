@@ -24,8 +24,8 @@ h1 {
 
 button {
     font-size: 20px;
-    color: ede0d4;
-    background-color: 7f5539;
+    color: #ede0d4;
+    background-color: #7f5539;
     border-style: none;
     padding: 20px;
     margin-bottom: 20px;
@@ -49,10 +49,15 @@ button {
     width: 200px;
     margin-top: 40px;
     background-color: #e6ccb2;
+    border: 2px solid #7f5539;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 .addBookForm {
     position: fixed;
+    display: grid;
+    grid-template-columns: auto auto;
     font-size: 30px;
     padding: 20px;
     margin: 10px;
@@ -60,7 +65,7 @@ button {
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
     z-index: 10;
-    border: 1px solid black;
+    border: 2px solid #7f5539;
     border-radius: 10px;
     background-color: #e6ccb2;
     height: 400px;
@@ -73,13 +78,27 @@ button {
 }
 
 .formInput {
+    color: #7f5539;
+    font-size: 25px;
     border: none;
-    padding: 10px;
-    margin: 10px;
-    align-items: right;
+    background-color: #e6ccb2;
+    border-bottom: 2px solid #7f5539;
+    width: 200px;
+    margin-top: -2px;
     margin-left: 20px;
-    width: 50%;
-    height: 30px
+    height: 30px;
+    padding: 20px;
 }
+
+.formInput:focus {
+    outline: none;
+}
+
+.formInput.error {
+    border-style: solid;
+    border-color: red;
+}
+
+
 
 

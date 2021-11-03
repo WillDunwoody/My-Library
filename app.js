@@ -18,25 +18,37 @@ addBook.addEventListener("click", function() {
 })
 
 submitBook.addEventListener("click", function() {
-    checkInputs()
+    getInputs()
 })
 
 function getInputs() {
+    inputs.forEach(input => input.classList.remove('error'))
     let title = document.getElementById("title").value
     let author = document.getElementById("author").value
     let totalPages = document.getElementById("totalPages").value
     let readStatus = document.getElementById("readStatus").value
-    
-    addBookToLibrary(title, author, totalPages, readStatus)
+    checkInputs(title, author, totalPages, readStatus)
 }
 
-function checkInputs() {
-    console.log(inputs)
-    inputs.forEach(input =>  {
-        if(input.value === '') {
-            input.value = 'This is blank'
+function checkInputs(title, author, totalPages, readStatus) {
+    let checkInputsArr = [title, author, totalPages, readStatus]
+    let controlArr = []
+
+    for(let i = 0; i < checkInputsArr.length; i++) {
+        if(!checkInputsArr[i] == '') {
+            controlArr.push(checkInputsArr[i])
         }
-    })
+    }
+
+    if(controlArr.length < 4) {
+        inputs.forEach(input =>  {
+            if(input.value === '') {
+                input.classList.add('error')  
+            }
+        })
+    } else {
+        addBookToLibrary(title, author, totalPages, readStatus)
+    }
 }
 
 function addBookToLibrary(title, author, totalPages, readStatus) {
@@ -70,7 +82,7 @@ function createCard() {
 
         title.textContent = books.title
         author.textContent = "by " + books.author
-        totalPages.textContent = books.totalPages
+        totalPages.textContent = "Pages: " + books.totalPages
         readStatus.textContent = books.readStatus
     }
 }
@@ -78,5 +90,11 @@ function createCard() {
 function clearBookCards() {
     while (bookContainer.lastChild) {
         bookContainer.removeChild(bookContainer.lastChild)
+    }
+}
+
+function removeBook() {
+    for(let books of myLibrary) {
+        
     }
 }
