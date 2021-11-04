@@ -22,7 +22,7 @@ h1 {
     border-bottom: ede0d4;
 }
 
-button {
+#addBook {
     font-size: 20px;
     color: #ede0d4;
     background-color: #7f5539;
@@ -35,6 +35,7 @@ button {
     display: grid;
     justify-content: center;
 }
+
 .container {
     display: grid;
     justify-content: center;
@@ -44,21 +45,10 @@ button {
     width: 960px;
 }
 
-.bookCard {
-    height: 250px;
-    width: 200px;
-    margin-top: 40px;
-    background-color: #e6ccb2;
-    border: 2px solid #7f5539;
-    border-radius: 10px;
-    padding: 20px;
-}
-
 .addBookForm {
     position: fixed;
     display: grid;
-    grid-template-columns: auto auto;
-    font-size: 30px;
+    justify-items: center;
     padding: 20px;
     margin: 10px;
     top: 50%;
@@ -75,6 +65,42 @@ button {
 
 .addBookForm.active {
     transform: translate(-50%, -50%) scale(1);
+}
+
+.bookFormTxtContent {
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+    font-size: 30px;
+    height: 300px;
+}
+
+.readButton {
+    width: 45px;
+    height: 45px;
+    margin-left: 87px;
+    margin-top: -3.5px;
+    background-color: #e6ccb2;
+    border: 3px solid #7f5539;
+}
+
+.readButton:active {
+    background-color: #7f5539;
+}
+
+.readButton.pressed {
+    background-color: #7f5539;   
+}
+
+#submitBook {
+    width: 100px;
+    height: 60px;
+    font-size: 20px;
+    color: #ede0d4;
+    background-color: #7f5539;
+    border-style: none;
+    padding: 20px;
+
 }
 
 .formInput {
@@ -99,6 +125,46 @@ button {
     border-color: red;
 }
 
+.bookCard {
+    height: 250px;
+    width: 200px;
+    margin-top: 40px;
+    background-color: #e6ccb2;
+    border: 2px solid #7f5539;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1.75vmin;
+}
+
+.title {
+    height: 45%;
+    font-size: 2.75vmin;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.author {
+    height: 15%;
+    margin-bottom: 10px;
+    font-size: 2.25vmin;
+}
+
+.totalPages {
+    height: 15%;
+    font-size: 2.25vmin;
+}
+
+.cardFooter {
+    height: 15%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.deleteButton {
+    width: 30px;
+    background-image: '/images/DeleteButton(1).png';
+}
 
 
 

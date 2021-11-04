@@ -17,13 +17,14 @@
             </div>
         </div>
         <div class="addBookForm" id="addBookForm">
-            Title:<input type="text" class="formInput" id="title">
-            Author:<input type="text" class="formInput" id="author">
-            Pages:<input type="number" class="formInput" id="totalPages">
-            Read:<input type="text" class="formInput" id="readStatus">
+            <div class="bookFormTxtContent">
+                Title:<input type="text" maxlength="60" class="formInput" id="title">
+                Author:<input type="text" maxlength="30" class="formInput" id="author">
+                Pages:<input type="number" class="formInput" id="totalPages">
+                Read:<input type="checkbox" id="readStatus">
+            </div>
             <button id="submitBook" >Submit</button>
         </div>
-        <div id="overlay"></div>
         <script src="app.js"></script>
     </body>
     
