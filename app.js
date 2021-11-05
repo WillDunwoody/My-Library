@@ -12,8 +12,6 @@ const addBookForm = document.getElementById("addBookForm")
 const submitBook = document.getElementById("submitBook")
 const inputs = document.querySelectorAll(".formInput")
 const bookContainer = document.querySelector(".container")
-const toggleButton = document.getElementsByClassName("toggleButton")
-const removeButton = document.getElementsByClassName("removeButton")
 
 addBook.addEventListener("click", function() {
     addBookForm.classList.add('active')
@@ -78,15 +76,17 @@ function createCard() {
         let totalPages = document.createElement('div')
         let cardFooter = document.createElement('div')
         let toggleButton = document.createElement('button')
-        let removeButton = document.createElement('button')
+        let deleteButton = document.createElement('button')
 
         newCard.classList.add('bookCard')
         title.classList.add('title')
         author.classList.add('author')
         totalPages.classList.add('totalPages')
         cardFooter.classList.add('cardFooter')
+        toggleButton.classList.add('toggleButton')
+        deleteButton.classList.add('deleteButton')
         toggleButton.onclick = toggleRead
-        removeButton.onclick = deleteBook
+        deleteButton.onclick = deleteBook
         
         
         bookContainer.appendChild(newCard)
@@ -95,7 +95,7 @@ function createCard() {
         newCard.appendChild(totalPages)
         newCard.appendChild(cardFooter)
         cardFooter.appendChild(toggleButton)
-        cardFooter.appendChild(removeButton)
+        cardFooter.appendChild(deleteButton)
 
         title.textContent = books.title
         author.textContent = "by " + books.author
@@ -115,18 +115,26 @@ function clearBookCards() {
     }
 }
 
-function deleteBook() {
-    console.log("This Works")
+function findBook(title) {
+    let bookTitle = title.target.parentNode.parentNode.firstChild.innerHTML
+    return myLibrary.find(book => book.title === bookTitle)
+}
+
+function deleteBook(title) {
+    let deleteBook = findBook(title)
+    myLibrary = myLibrary.filter(book => book != deleteBook)
+    createCard()
 }
 
 function toggleRead(title) {
-    let newList = title.target.parentNode.parentNode.firstChild.innerHTML
-    let newBook = myLibrary.find(book => book.title === newList)
-    if(newBook.readStatus === true) {
-        newBook.readStatus = false
+    let bookStatus = findBook(title)
+    let toggleButton = title.target.parentNode
+    if(bookStatus.readStatus === true) {
+        bookStatus.readStatus = false
+        toggleButton.textContent = "Not Read"
     } else {
-        newBook.readStatus =  true
+        bookStatus.readStatus =  true
+        toggleButton.textContent = "Read"
     }
-    console.log(newBook)
+    createCard()
 }
-

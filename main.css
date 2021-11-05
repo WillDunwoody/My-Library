@@ -75,23 +75,6 @@ h1 {
     height: 300px;
 }
 
-.readButton {
-    width: 45px;
-    height: 45px;
-    margin-left: 87px;
-    margin-top: -3.5px;
-    background-color: #e6ccb2;
-    border: 3px solid #7f5539;
-}
-
-.readButton:active {
-    background-color: #7f5539;
-}
-
-.readButton.pressed {
-    background-color: #7f5539;   
-}
-
 #submitBook {
     width: 100px;
     height: 60px;
@@ -123,6 +106,7 @@ h1 {
 .formInput.error {
     border-style: solid;
     border-color: red;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .bookCard {
@@ -162,9 +146,16 @@ h1 {
 }
 
 .deleteButton {
-    width: 30px;
-    background-image: '/images/DeleteButton(1).png';
+    width: 20px;
+    background-image: url'/images/DeleteButton(1).png';
 }
+
+.toggleButton {
+    width: 50px;
+}
+
+
+
 
 
 
