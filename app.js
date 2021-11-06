@@ -12,6 +12,21 @@ const addBookForm = document.getElementById("addBookForm")
 const submitBook = document.getElementById("submitBook")
 const inputs = document.querySelectorAll(".formInput")
 const bookContainer = document.querySelector(".container")
+let readStatus = document.getElementById("readStatus")
+let isRead = document.getElementsByClassName("isRead")
+readStatus.onclick = readStatusUpdate
+isRead = false
+
+function readStatusUpdate() {
+    
+    if(isRead) {
+        isRead = false
+        readStatus.classList.remove("active")
+    } else {
+        isRead = true
+        readStatus.classList.add("active")
+    }
+}
 
 addBook.addEventListener("click", function() {
     addBookForm.classList.add('active')
@@ -26,12 +41,13 @@ function getInputs() {
     let title = document.getElementById("title").value
     let author = document.getElementById("author").value
     let totalPages = document.getElementById("totalPages").value
-    let readStatus = document.getElementById("readStatus").checked
+    let readStatus = isRead
 
     checkInputs(title, author, totalPages, readStatus)
 }
 
 function checkInputs(title, author, totalPages, readStatus) {
+    console.log(isRead)
 
     let checkInputsArr = [title, author, totalPages]
     let controlArr = []
@@ -62,7 +78,7 @@ function addBookToLibrary(title, author, totalPages, readStatus) {
 
 function clearInputs() {
     inputs.forEach(input => input.value = '')
-    readStatus.checked = false
+    isRead = false
     addBookForm.classList.remove('active')
 }
 
@@ -100,10 +116,12 @@ function createCard() {
         title.textContent = books.title
         author.textContent = "by " + books.author
         totalPages.textContent = "Pages: " + books.totalPages
-        if(books.readStatus === true) {
+        if(books.readStatus) {
             toggleButton.textContent = "Read"
+            toggleButton.classList.add('read')
         } else {
             toggleButton.textContent = "Not Read"
+            toggleButton.classList.add('notRead')
         }
     }
 
@@ -128,13 +146,10 @@ function deleteBook(title) {
 
 function toggleRead(title) {
     let bookStatus = findBook(title)
-    let toggleButton = title.target.parentNode
-    if(bookStatus.readStatus === true) {
+    if(bookStatus.readStatus) {
         bookStatus.readStatus = false
-        toggleButton.textContent = "Not Read"
     } else {
         bookStatus.readStatus =  true
-        toggleButton.textContent = "Read"
     }
     createCard()
 }
