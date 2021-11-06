@@ -38,9 +38,9 @@ submitBook.addEventListener('click', function() {
 
 function getInputs() {
     inputs.forEach(input => input.classList.remove("error"))
-    let title = document.getElementById('title').value
-    let author = document.getElementById('author').value
-    let totalPages = document.getElementById('totalPages').value
+    let title = document.getElementById("title").value
+    let author = document.getElementById("author").value
+    let totalPages = document.getElementById("totalPages").value
     let readStatus = checkRead
 
     checkInputs(title, author, totalPages, readStatus)
