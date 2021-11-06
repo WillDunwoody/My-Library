@@ -13,24 +13,24 @@ const submitBook = document.getElementById("submitBook")
 const inputs = document.querySelectorAll(".formInput")
 const bookContainer = document.querySelector(".container")
 let readStatus = document.getElementById("readStatus")
-let isRead = document.getElementsByClassName("isRead")
-readStatus.onclick = readStatusUpdate
-isRead = false
-
-function readStatusUpdate() {
-    
-    if(isRead) {
-        isRead = false
-        readStatus.classList.remove("active")
-    } else {
-        isRead = true
-        readStatus.classList.add("active")
-    }
-}
+let checkRead = document.getElementsByClassName("checkRead")
 
 addBook.addEventListener("click", function() {
     addBookForm.classList.add('active')
 })
+
+readStatus.onclick = readStatusUpdate
+checkRead = false
+
+function readStatusUpdate() {
+    if(checkRead) {
+        checkRead = false
+        readStatus.classList.remove("active")
+    } else {
+        checkRead = true
+        readStatus.classList.add("active")
+    }
+}
 
 submitBook.addEventListener("click", function() {
     getInputs()
@@ -41,13 +41,12 @@ function getInputs() {
     let title = document.getElementById("title").value
     let author = document.getElementById("author").value
     let totalPages = document.getElementById("totalPages").value
-    let readStatus = isRead
+    let readStatus = checkRead
 
     checkInputs(title, author, totalPages, readStatus)
 }
 
 function checkInputs(title, author, totalPages, readStatus) {
-    console.log(isRead)
 
     let checkInputsArr = [title, author, totalPages]
     let controlArr = []
@@ -78,7 +77,8 @@ function addBookToLibrary(title, author, totalPages, readStatus) {
 
 function clearInputs() {
     inputs.forEach(input => input.value = '')
-    isRead = false
+    checkRead = false
+    readStatus.classList.remove('active')
     addBookForm.classList.remove('active')
 }
 
