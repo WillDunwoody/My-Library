@@ -7,15 +7,15 @@ function Book(title, author, totalPages, readStatus) {
     this.readStatus = readStatus;
 }
 
-const addBook = document.getElementById("addBook")
-const addBookForm = document.getElementById("addBookForm")
-const submitBook = document.getElementById("submitBook")
-const inputs = document.querySelectorAll(".formInput")
-const bookContainer = document.querySelector(".container")
-let readStatus = document.getElementById("readStatus")
-let checkRead = document.getElementsByClassName("checkRead")
+const addBook = document.getElementById('addBook')
+const addBookForm = document.getElementById('addBookForm')
+const submitBook = document.getElementById('submitBook')
+const inputs = document.querySelectorAll('.formInput')
+const bookContainer = document.querySelector('.container')
+let readStatus = document.getElementById('readStatus')
+let checkRead = document.getElementsByClassName('checkRead')
 
-addBook.addEventListener("click", function() {
+addBook.addEventListener('click', function() {
     addBookForm.classList.add('active')
 })
 
@@ -25,22 +25,22 @@ checkRead = false
 function readStatusUpdate() {
     if(checkRead) {
         checkRead = false
-        readStatus.classList.remove("active")
+        readStatus.classList.remove('active')
     } else {
         checkRead = true
-        readStatus.classList.add("active")
+        readStatus.classList.add('active')
     }
 }
 
-submitBook.addEventListener("click", function() {
+submitBook.addEventListener('click', function() {
     getInputs()
 })
 
 function getInputs() {
-    inputs.forEach(input => input.classList.remove('error'))
-    let title = document.getElementById("title").value
-    let author = document.getElementById("author").value
-    let totalPages = document.getElementById("totalPages").value
+    inputs.forEach(input => input.classList.remove("error"))
+    let title = document.getElementById('title').value
+    let author = document.getElementById('author').value
+    let totalPages = document.getElementById('totalPages').value
     let readStatus = checkRead
 
     checkInputs(title, author, totalPages, readStatus)
@@ -114,13 +114,13 @@ function createCard() {
         cardFooter.appendChild(deleteButton)
 
         title.textContent = books.title
-        author.textContent = "by " + books.author
-        totalPages.textContent = "Pages: " + books.totalPages
+        author.textContent = 'by ' + books.author
+        totalPages.textContent = 'Pages: ' + books.totalPages
         if(books.readStatus) {
-            toggleButton.textContent = "Read"
+            toggleButton.textContent = 'Read'
             toggleButton.classList.add('read')
         } else {
-            toggleButton.textContent = "Not Read"
+            toggleButton.textContent = 'Not Read'
             toggleButton.classList.add('notRead')
         }
     }
