@@ -169,4 +169,5 @@ function toggleRead(title) {
     createCard()
 }
 
-addBookToLibrary("Harry Potter", "JK Rowling", "321", "true")
+addBookToLibrary("Richest Man in Babylon", "George S. Clason", "144", true)
+addBookToLibrary("How to Make Friends and Influence People", "Dale Carnegie", "291", false)
