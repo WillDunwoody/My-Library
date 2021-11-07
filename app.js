@@ -170,4 +170,4 @@ function toggleRead(title) {
 }
 
 addBookToLibrary("Richest Man in Babylon", "George S. Clason", "144", true)
-addBookToLibrary("How to Make Friends and Influence People", "Dale Carnegie", "291", false)
+addBookToLibrary("How to Win Friends and Influence People", "Dale Carnegie", "291", false)
