@@ -12,11 +12,14 @@ const addBookForm = document.getElementById('addBookForm')
 const submitBook = document.getElementById('submitBook')
 const inputs = document.querySelectorAll('.formInput')
 const bookContainer = document.querySelector('.container')
+const confirmInLibrary = document.getElementById('confirmInLibrary')
+const popupConfirm = document.getElementById('popupConfirm')
 let readStatus = document.getElementById('readStatus')
 let checkRead = document.getElementsByClassName('checkRead')
 
 addBook.addEventListener('click', function() {
     addBookForm.classList.add('active')
+    overlay.classList.add('active')
 })
 
 readStatus.onclick = readStatusUpdate
@@ -70,9 +73,20 @@ function checkInputs(title, author, totalPages, readStatus) {
 
 function addBookToLibrary(title, author, totalPages, readStatus) {
     let newBook = new Book(title, author, totalPages, readStatus)
+    if(existsInLibrary(newBook)) {
+        confirmInLibrary.classList.add('active')
+        popupConfirm.addEventListener('click', function() {
+            confirmInLibrary.classList.remove('active')
+        })
+        return
+    }
     myLibrary.push(newBook)
     createCard()
     clearInputs()
+}
+
+function existsInLibrary(newBook) {
+    return myLibrary.find(book => book.title === newBook.title)
 }
 
 function clearInputs() {
@@ -80,6 +94,7 @@ function clearInputs() {
     checkRead = false
     readStatus.classList.remove('active')
     addBookForm.classList.remove('active')
+    overlay.classList.remove('active')
 }
 
 function createCard() {
@@ -153,3 +168,5 @@ function toggleRead(title) {
     }
     createCard()
 }
+
+addBookToLibrary("Harry Potter", "JK Rowling", "321", "true")

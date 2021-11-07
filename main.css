@@ -16,8 +16,7 @@ body {
 }
 
 h1 {
-    padding-top: 20px;
-    font-weight: 100;
+    font-weight: 600;
 }
 
 .head {
@@ -130,6 +129,38 @@ h1 {
     border-bottom: 4px solid #C42021;
 }
 
+#confirmInLibrary {
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 10;
+    border: 2px solid #7f5539;
+    border-radius: 10px;
+    background-color: #e6ccb2;
+    height: 220px;
+    width: 350px;
+    max-width: 80%;
+}
+
+#confirmInLibrary.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popupConfirm {
+    font-size: 20px;
+    color: #ede0d4;
+    background-color: #7f5539;
+    border-style: none;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
 .bookCard {
     height: 250px;
     width: 200px;
@@ -193,4 +224,20 @@ h1 {
     background-color: #e6ccb2;
     color: #7f5539;
     font-size: 15px;
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
 }
