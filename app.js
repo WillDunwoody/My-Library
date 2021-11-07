@@ -108,8 +108,11 @@ function createCard() {
         let cardFooter = document.createElement('div')
         let toggleButton = document.createElement('button')
         let deleteButton = document.createElement('button')
+        let id = myLibrary.indexOf(books)
+        
 
         newCard.classList.add('bookCard')
+        newCard.setAttribute('id', id)
         title.classList.add('title')
         author.classList.add('author')
         totalPages.classList.add('totalPages')
@@ -148,19 +151,20 @@ function clearBookCards() {
     }
 }
 
-function findBook(title) {
-    let bookTitle = title.target.parentNode.parentNode.firstChild.innerHTML
-    return myLibrary.find(book => book.title === bookTitle)
+function findBook(id) {
+    
+    let foundBook = id.target.parentNode.parentNode.id
+    return myLibrary[foundBook]
 }
 
-function deleteBook(title) {
-    let deleteBook = findBook(title)
+function deleteBook(id) {
+    let deleteBook = findBook(id)
     myLibrary = myLibrary.filter(book => book != deleteBook)
     createCard()
 }
 
-function toggleRead(title) {
-    let bookStatus = findBook(title)
+function toggleRead(id) {
+    let bookStatus = findBook(id)
     if(bookStatus.readStatus) {
         bookStatus.readStatus = false
     } else {
