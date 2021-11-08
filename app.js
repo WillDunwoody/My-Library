@@ -9,6 +9,7 @@ function Book(title, author, totalPages, readStatus) {
 
 const addBook = document.getElementById('addBook')
 const addBookForm = document.getElementById('addBookForm')
+const exitBookForm = document.getElementById('exitBookForm')
 const submitBook = document.getElementById('submitBook')
 const inputs = document.querySelectorAll('.formInput')
 const bookContainer = document.querySelector('.container')
@@ -17,10 +18,13 @@ const popupConfirm = document.getElementById('popupConfirm')
 let readStatus = document.getElementById('readStatus')
 let checkRead = document.getElementsByClassName('checkRead')
 
+
 addBook.addEventListener('click', function() {
     addBookForm.classList.add('active')
     overlay.classList.add('active')
 })
+
+exitBookForm.addEventListener('click', clearInputs)
 
 readStatus.onclick = readStatusUpdate
 checkRead = false
@@ -152,7 +156,6 @@ function clearBookCards() {
 }
 
 function findBook(id) {
-    
     let foundBook = id.target.parentNode.parentNode.id
     return myLibrary[foundBook]
 }

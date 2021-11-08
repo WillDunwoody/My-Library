@@ -76,6 +76,15 @@ h1 {
     transform: translate(-50%, -50%) scale(1);
 }
 
+#exitBookForm {
+    margin-left: 275px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7f5539;
+    border: none;
+    background-color: #e6ccb2;
+}
+
 .bookFormTxtContent {
     padding-top: 20px;
     display: grid;
@@ -201,10 +210,19 @@ h1 {
     border: none;
     width: 35px;
     height: 35px;
-    background-image: url('images/DeleteButton(1).png');
+    background-image: url('images/DeleteButton.png');
     background-size: cover;
-    margin-top: 10px;
+    margin-top: 7px;
     margin-left: 50px;
+}
+
+.deleteButton:hover {
+    margin-top: 0;
+    height: 50px;
+    width: 50px;
+    margin-left: 42px;
+    border: 8px solid #7f5539;
+    background-image: url('images/DeleteButtonHighlight.png');
 }
 
 .toggleButton {
