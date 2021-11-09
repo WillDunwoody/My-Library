@@ -84,7 +84,9 @@ function addBookToLibrary(title, author, totalPages, readStatus) {
         })
         return
     }
+
     myLibrary.push(newBook)
+    updateLocal()
     createCard()
     clearInputs()
 }
@@ -146,7 +148,6 @@ function createCard() {
             toggleButton.classList.add('notRead')
         }
     }
-
 }
 
 function clearBookCards() {
@@ -163,6 +164,7 @@ function findBook(id) {
 function deleteBook(id) {
     let deleteBook = findBook(id)
     myLibrary = myLibrary.filter(book => book != deleteBook)
+    updateLocal()
     createCard()
 }
 
@@ -173,8 +175,34 @@ function toggleRead(id) {
     } else {
         bookStatus.readStatus =  true
     }
+    updateLocal()
     createCard()
 }
 
-addBookToLibrary("Richest Man in Babylon", "George S. Clason", "144", true)
-addBookToLibrary("How to Win Friends and Influence People", "Dale Carnegie", "291", false)
+function checkLocal() {
+    let localLibrary = JSON.parse(localStorage.myLibrary)
+    for(let i = 0; i < localLibrary.length; i++) {
+        myLibrary.push(localLibrary[i])
+    }
+    createCard()
+}
+    
+function updateLocal() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
+}
+
+checkLocal()
+
+//In Pages type numbers only
+function validate(event) {
+    let theEvent = event || window.event;
+  
+    let key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode(key);
+
+    let regex = /[0-9]|\./;
+    if( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
