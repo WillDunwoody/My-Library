@@ -18,7 +18,6 @@ const popupConfirm = document.getElementById('popupConfirm')
 let readStatus = document.getElementById('readStatus')
 let checkRead = document.getElementsByClassName('checkRead')
 
-
 addBook.addEventListener('click', function() {
     addBookForm.classList.add('active')
     overlay.classList.add('active')
@@ -58,9 +57,9 @@ function checkInputs(title, author, totalPages, readStatus) {
     let checkInputsArr = [title, author, totalPages]
     let controlArr = []
 
-    for(let i = 0; i < checkInputsArr.length; i++) {
-        if(!checkInputsArr[i] == '') {
-            controlArr.push(checkInputsArr[i])
+    for(let input of checkInputsArr) {
+        if(!input == '') {
+            controlArr.push(input)
         }
     }
 
@@ -92,7 +91,7 @@ function addBookToLibrary(title, author, totalPages, readStatus) {
 }
 
 function existsInLibrary(newBook) {
-    return myLibrary.find(book => book.title === newBook.title)
+    return myLibrary.find(book => book.title === newBook.title && book.author === newBook.author)
 }
 
 function clearInputs() {
@@ -116,7 +115,6 @@ function createCard() {
         let deleteButton = document.createElement('button')
         let id = myLibrary.indexOf(books)
         
-
         newCard.classList.add('bookCard')
         newCard.setAttribute('id', id)
         title.classList.add('title')
@@ -127,7 +125,6 @@ function createCard() {
         deleteButton.classList.add('deleteButton')
         toggleButton.onclick = toggleRead
         deleteButton.onclick = deleteBook
-        
         
         bookContainer.appendChild(newCard)
         newCard.appendChild(title)
@@ -144,7 +141,7 @@ function createCard() {
             toggleButton.textContent = 'Read'
             toggleButton.classList.add('read')
         } else {
-            toggleButton.textContent = 'Not Read'
+            toggleButton.textContent = 'Want to Read'
             toggleButton.classList.add('notRead')
         }
     }
@@ -162,8 +159,7 @@ function findBook(id) {
 }
 
 function deleteBook(id) {
-    let deleteBook = findBook(id)
-    myLibrary = myLibrary.filter(book => book != deleteBook)
+    myLibrary = myLibrary.filter(book => book != findBook(id))
     updateLocal()
     createCard()
 }
@@ -180,9 +176,8 @@ function toggleRead(id) {
 }
 
 function checkLocal() {
-    let localLibrary = JSON.parse(localStorage.myLibrary)
-    for(let i = 0; i < localLibrary.length; i++) {
-        myLibrary.push(localLibrary[i])
+    for(let books of JSON.parse(localStorage.myLibrary)) {
+        myLibrary.push(books)
     }
     createCard()
 }
