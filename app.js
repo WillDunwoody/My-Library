@@ -176,9 +176,7 @@ function toggleRead(id) {
 }
 
 function checkLocal() {
-    for(let books of JSON.parse(localStorage.myLibrary)) {
-        myLibrary.push(books)
-    }
+    myLibrary = JSON.parse(localStorage.myLibrary)
     createCard()
 }
     
