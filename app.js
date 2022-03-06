@@ -175,16 +175,14 @@ function toggleRead(id) {
     createCard()
 }
 
-function checkLocal() {
+(function checkLocal() {
     myLibrary = JSON.parse(localStorage.myLibrary)
     createCard()
-}
+})()
     
 function updateLocal() {
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary))
 }
-
-checkLocal()
 
 //In Pages type numbers only
 function validate(event) {
